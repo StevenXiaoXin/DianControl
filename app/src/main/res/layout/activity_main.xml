@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/background_edit"
     tools:context="com.daqianjietong.diancontrol.MainActivity">
 
     <include layout="@layout/title_bar"/>
@@ -14,10 +15,88 @@
     android:layout_height="0dp"
     android:layout_weight="1"
     android:orientation="horizontal"
+    android:background="@color/background_edit"
     android:layout_marginTop="@dimen/margin_top_btn"
     >
+<RelativeLayout
+    android:layout_width="0dp"
+    android:layout_weight="1"
+    android:layout_marginLeft="@dimen/small_margin"
+    android:layout_marginRight="@dimen/more_small_margin"
+    android:layout_height="match_parent">
+<TextView
+    android:id="@+id/btn_order_park"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    />
+    <!--android:background="@mipmap/iv_order_list"-->
+    <TextView
+        android:id="@+id/tv_order_num"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/textview_background"
+        android:text="1"
+        android:padding="@dimen/more_small_margin"
+        android:textColor="@color/background_edit"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_margin="@dimen/small_margin"
+        />
 
+</RelativeLayout>
+
+    <RelativeLayout
+    android:layout_width="0dp"
+    android:layout_weight="1"
+    android:layout_marginLeft="@dimen/more_small_margin"
+    android:layout_marginRight="@dimen/small_margin"
+    android:layout_height="match_parent">
+
+
+</RelativeLayout>
 
 </LinearLayout>
+    <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="1"
+    android:orientation="horizontal"
+    android:background="@color/background_edit"
+    android:layout_marginTop="@dimen/margin_top"
+    >
+<Button
+    android:id="@+id/btn_quick_park"
+    android:layout_width="0dp"
+    android:layout_weight="1"
+    android:background="@mipmap/iv_quick_park"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="@dimen/small_margin"
+    android:layout_marginRight="@dimen/more_small_margin"
+
+    />
+        <Button
+    android:id="@+id/btn_personal_center"
+    android:layout_width="0dp"
+    android:layout_weight="1"
+    android:background="@mipmap/iv_personal_center"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="@dimen/more_small_margin"
+    android:layout_marginRight="@dimen/small_margin"
+
+    />
+
+</LinearLayout>
+
+    <Button
+        android:id="@+id/btn_receipt"
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:background="@mipmap/iv_receipt"
+        android:layout_height="0dp"
+        android:layout_marginLeft="@dimen/small_margin"
+        android:layout_marginRight="@dimen/small_margin"
+        android:layout_marginTop="@dimen/margin_top"
+        android:layout_marginBottom="@dimen/margin_bottom"
+        />
 
 </LinearLayout>
