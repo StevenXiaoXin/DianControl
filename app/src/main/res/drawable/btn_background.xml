@@ -4,10 +4,15 @@
     <item>
         <shape
             xmlns:android="http://schemas.android.com/apk/res/android"
-            android:shape="oval">
+            android:shape="rectangle">
             <solid
                 android:color="@color/red_button"/>//填充色
-
+            <corners
+                android:radius="5dip"
+                />
+            <!--<stroke-->
+                <!--android:width="0.5px"-->
+                <!--android:color="#505050"/>-->
         </shape>
     </item>
 </layer-list>

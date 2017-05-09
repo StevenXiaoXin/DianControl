@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:gravity="center"
+              android:orientation="vertical"
+              android:background="@color/background_color"
+    >
+
+    <EditText
+        android:id="@+id/et_user_name"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/edittext_hight"
+        android:layout_marginLeft="@dimen/margin_left"
+        android:layout_marginRight="@dimen/margin_right"
+        android:textSize="@dimen/text_size"
+        android:hint="请输入用户名"
+        android:gravity="center"
+        android:background="@drawable/edit_background"
+        android:cursorVisible="false"
+        />
+    <EditText
+        android:id="@+id/et_user_password"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/edittext_hight"
+        android:layout_marginLeft="@dimen/margin_left"
+        android:layout_marginRight="@dimen/margin_right"
+        android:textSize="@dimen/text_size"
+        android:layout_marginTop="@dimen/margin_top_edit"
+        android:hint="请输入密码"
+        android:gravity="center"
+        android:background="@drawable/edit_background"
+        android:cursorVisible="false"
+        />
+
+    <Button
+        android:id="@+id/btn_login"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/edittext_hight"
+        android:text="登                  录"
+        android:textColor="@color/background_edit"
+        android:layout_marginRight="@dimen/margin_right"
+        android:layout_marginLeft="@dimen/margin_left"
+        android:background="@drawable/btn_background"
+        android:layout_marginTop="@dimen/margin_top_btn"
+        />
+
+
+</LinearLayout>
