@@ -21,9 +21,18 @@ public class Api {
     public enum  API_METHOD{
         POST,GET
     }
-    private static  String HOST = "https://www.baidu.com";
+    private static  String HOST = "http://www.daqianjietong.com/dianapi.php/";
 
-    private static final String LOGIN="/dologin";
+    private static final String LOGIN="ManagerLogin/login?";
+    private static final String PERSIONAL="Muser/index?token=";
+    private static final String CHANGEPSD="Muser/upPassword?token=";
+    private static final String ORDERLIST="Mreserve/reserveList?token=";
+    private static final String PARKLIST="Mreserve/parkingList?token=";
+    private static final String QUICKPARK="Mreserve/parkCar?token=";
+    private static final String CONTINUE="Mreserve/renewParking?token=";
+    private static final String QUICKLIST="Mpayment/stopList?token=";
+    private static final String LEAVE="Mpayment/subParking?token=";
+    private static final String GETNUM="Muser/getParkNum?token=";
 
     /**
      * 是否debug调试（切换测试环境和生产环境）
@@ -35,14 +44,13 @@ public class Api {
 
     static {
         if(Debug){
-            HOST = "http://test.daqianjietong.com/";
+            HOST = "http://test.daqianjietong.com/dianapi.php/";
         }
     }
 
     public static Api getInstance(){
         if(api == null)
             api = new Api();
-
         return api;
     }
 
@@ -57,7 +65,7 @@ public class Api {
       params.put("txt_phone",username);
       params.put("txt_password",password);
       HttpUtil httpUtil = new HttpUtil();
-      httpUtil.setUrl(HOST+"dianapi.php/ManagerLogin/login?").setMethod(API_METHOD.GET).setParams(params).setTypetoken(new TypeToken<UserInfoBean>(){}.getType()).seturllisenter(listenter).start();
+      httpUtil.setUrl(HOST+LOGIN).setMethod(API_METHOD.GET).setParams(params).setTypetoken(new TypeToken<UserInfoBean>(){}.getType()).seturllisenter(listenter).start();
   }
 
     /**

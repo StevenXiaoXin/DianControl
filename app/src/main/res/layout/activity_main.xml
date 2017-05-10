@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/background_edit"
-    tools:context="com.daqianjietong.diancontrol.MainActivity">
+    tools:context="com.daqianjietong.diancontrol.activity.MainActivity">
 
     <include layout="@layout/title_bar"/>
 <LinearLayout

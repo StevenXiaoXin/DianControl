@@ -84,88 +84,88 @@ public class HttpUtil <T>{
 
 
 
-     @Deprecated
-    public   String getRequest(RequestParams params){
-
-
-        x.http().get(params, new Callback.CommonCallback<String>() {
-
-            @Override
-            public void onSuccess(String result) {
-                HttpUtil.this.result=result;
-                Toast.makeText(x.app(), result, Toast.LENGTH_LONG).show();
-            }
-
-            @Override
-            public void onError(Throwable ex, boolean isOnCallback) {
-                Toast.makeText(x.app(), ex.getMessage(), Toast.LENGTH_LONG).show();
-                if (ex instanceof HttpException) { // 网络错误
-                    HttpException httpEx = (HttpException) ex;
-                    int responseCode = httpEx.getCode();
-                    String responseMsg = httpEx.getMessage();
-                    String errorResult = httpEx.getResult();
-                    // ...
-                } else { // 其他错误
-                    // ...
-                }
-            }
-
-
-
-            @Override
-            public void onCancelled(CancelledException cex) {
-            //取消请求，后期可以加取消提示
-            }
-
-
-            // 不管成功或者失败最后都会回调该接口，把最后必须处理的放在这个方法中。
-            @Override
-            public void onFinished() {
-
-            }
-        });
-
-        return result;
-    }
-    @Deprecated
-    public String postRequest(RequestParams params){
-
-
-        x.http().post(params, new Callback.CommonCallback<String>() {
-            @Override
-            public void onSuccess(String result) {
-                HttpUtil.this.result=result;
-
-            }
-
-            @Override
-            public void onError(Throwable ex, boolean isOnCallback) {
-                Toast.makeText(x.app(), ex.getMessage(), Toast.LENGTH_LONG).show();
-                if (ex instanceof HttpException) { // 网络错误
-                    HttpException httpEx = (HttpException) ex;
-                    int responseCode = httpEx.getCode();
-                    String responseMsg = httpEx.getMessage();
-                    String errorResult = httpEx.getResult();
-                    // ...
-                } else { // 其他错误
-                    // ...
-                }
-            }
-
-            @Override
-            public void onCancelled(CancelledException cex) {
-
-            }
-
-            @Override
-            public void onFinished() {
-
-            }
-        });
-
-
-        return result;
-    }
+//     @Deprecated
+//    public   String getRequest(RequestParams params){
+//
+//
+//        x.http().get(params, new Callback.CommonCallback<String>() {
+//
+//            @Override
+//            public void onSuccess(String result) {
+//                HttpUtil.this.result=result;
+//                Toast.makeText(x.app(), result, Toast.LENGTH_LONG).show();
+//            }
+//
+//            @Override
+//            public void onError(Throwable ex, boolean isOnCallback) {
+//                Toast.makeText(x.app(), ex.getMessage(), Toast.LENGTH_LONG).show();
+//                if (ex instanceof HttpException) { // 网络错误
+//                    HttpException httpEx = (HttpException) ex;
+//                    int responseCode = httpEx.getCode();
+//                    String responseMsg = httpEx.getMessage();
+//                    String errorResult = httpEx.getResult();
+//                    // ...
+//                } else { // 其他错误
+//                    // ...
+//                }
+//            }
+//
+//
+//
+//            @Override
+//            public void onCancelled(CancelledException cex) {
+//            //取消请求，后期可以加取消提示
+//            }
+//
+//
+//            // 不管成功或者失败最后都会回调该接口，把最后必须处理的放在这个方法中。
+//            @Override
+//            public void onFinished() {
+//
+//            }
+//        });
+//
+//        return result;
+//    }
+//    @Deprecated
+//    public String postRequest(RequestParams params){
+//
+//
+//        x.http().post(params, new Callback.CommonCallback<String>() {
+//            @Override
+//            public void onSuccess(String result) {
+//                HttpUtil.this.result=result;
+//
+//            }
+//
+//            @Override
+//            public void onError(Throwable ex, boolean isOnCallback) {
+//                Toast.makeText(x.app(), ex.getMessage(), Toast.LENGTH_LONG).show();
+//                if (ex instanceof HttpException) { // 网络错误
+//                    HttpException httpEx = (HttpException) ex;
+//                    int responseCode = httpEx.getCode();
+//                    String responseMsg = httpEx.getMessage();
+//                    String errorResult = httpEx.getResult();
+//                    // ...
+//                } else { // 其他错误
+//                    // ...
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(CancelledException cex) {
+//
+//            }
+//
+//            @Override
+//            public void onFinished() {
+//
+//            }
+//        });
+//
+//
+//        return result;
+//    }
 
     /**
      * 设置访问方式（post/get）

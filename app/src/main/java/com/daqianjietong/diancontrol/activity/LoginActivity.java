@@ -16,6 +16,7 @@ import com.daqianjietong.diancontrol.bean.UserInfoBean;
 import com.daqianjietong.diancontrol.utils.Api;
 import com.daqianjietong.diancontrol.utils.EmptyUtils;
 import com.daqianjietong.diancontrol.utils.HttpUtil;
+import com.daqianjietong.diancontrol.utils.JumpActivityUtils;
 import com.daqianjietong.diancontrol.utils.NetWorkUtil;
 import com.daqianjietong.diancontrol.utils.SharedPreferencesUtil;
 
@@ -24,6 +25,7 @@ import org.xutils.view.annotation.ViewInject;
 
 /**
  * Created by Administrator on 2017/5/9 0009.
+ * 登录页
  */
 @ContentView(R.layout.uer_login)
 public class LoginActivity extends BaseActivity implements View.OnClickListener{
@@ -52,37 +54,46 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
     }
 
     private void initData() {
+        userName=(String) SharedPreferencesUtil.getData(LoginActivity.this, "loginName", "");
+        password=(String) SharedPreferencesUtil.getData(LoginActivity.this, "password", "");
+        if (!EmptyUtils.isEmpty(userName)&& !EmptyUtils.isEmpty(password)) {
+            login();
+        }
         btn_login.setOnClickListener(this);
     }
 
+
     private void doLogin() {
-        userName=(String) SharedPreferencesUtil.getData(LoginActivity.this, "loginName", "");
-        password=(String) SharedPreferencesUtil.getData(LoginActivity.this, "password", "");
-        if (EmptyUtils.isEmpty(userName)|| EmptyUtils.isEmpty(password)) {
+
             userName=et_user_name.getText().toString();
             password=et_user_password.getText().toString();
             if (EmptyUtils.isEmpty(userName) || EmptyUtils.isEmpty(password)) {
                 Toast.makeText(context, "请输入用户名或密码", Toast.LENGTH_LONG).show();
             } else {
-                Api.getInstance().login(userName,password,new HttpUtil.URLListenter<UserInfoBean>() {
-                    @Override
-                    public void onsucess(UserInfoBean userInfoBean) throws Exception {
-                        Toast.makeText(getApplicationContext(),"登录成功",Toast.LENGTH_SHORT).show();
-                        Toast.makeText(getApplicationContext(),userInfoBean.toString(),Toast.LENGTH_SHORT).show();
-                        SharedPreferencesUtil.saveData(act, "userName", userName);
-                        SharedPreferencesUtil.saveData(act, "password", password);
-                        SharedPreferencesUtil.saveData(act, "uid", userInfoBean.getData().getUid());
-                        SharedPreferencesUtil.saveData(act, "token", userInfoBean.getData().getToken());
-                    }
-
-                    @Override
-                    public void onfaild(String error) {
-                        Toast.makeText(getApplicationContext(),error,Toast.LENGTH_SHORT).show();
-                        Log.e("解析列表数据失败---》",error);
-                    }
-                });
+                login();
             }
-        }
+
+    }
+
+    private void login() {
+        Api.getInstance().login(userName,password,new HttpUtil.URLListenter<UserInfoBean>() {
+            @Override
+            public void onsucess(UserInfoBean userInfoBean) throws Exception {
+                Toast.makeText(getApplicationContext(),"登录成功",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(),userInfoBean.toString(),Toast.LENGTH_SHORT).show();
+                SharedPreferencesUtil.saveData(act, "userName", userName);
+                SharedPreferencesUtil.saveData(act, "password", password);
+                SharedPreferencesUtil.saveData(act, "uid", userInfoBean.getData().getUid());
+                SharedPreferencesUtil.saveData(act, "token", userInfoBean.getData().getToken());
+                JumpActivityUtils.Jump2Activity(act, MainActivity.class);
+                act.finish();
+            }
+            @Override
+            public void onfaild(String error) {
+                Toast.makeText(getApplicationContext(),error,Toast.LENGTH_SHORT).show();
+                Log.e("解析列表数据失败---》",error);
+            }
+        });
     }
 
     @Override
