@@ -115,7 +115,14 @@ public class UserInfoBean {
     public String toString() {
         return "UserInfoBean{" +
                 "code=" + code +
-                ", data=" + data +
+                "data:{"+
+                ", uid=" + data.uid +
+                ", pu_username=" + data.pu_username +
+                ", pu_photo=" + data.pu_photo +
+                ", pu_phone=" + data.pu_phone +
+                ", pu_parkname=" + data.pu_parkname +
+                ", pu_parkid=" + data.pu_parkid +
+                ", token=" + data.token +
                 ", message='" + message + '\'' +
                 '}';
     }

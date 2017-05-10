@@ -1,6 +1,5 @@
 package com.daqianjietong.diancontrol.utils;
 
-import android.app.Activity;
 
 import com.daqianjietong.diancontrol.bean.UserInfoBean;
 import com.google.gson.reflect.TypeToken;
@@ -67,6 +66,7 @@ public class Api {
       HttpUtil httpUtil = new HttpUtil();
       httpUtil.setUrl(HOST+LOGIN).setMethod(API_METHOD.GET).setParams(params).setTypetoken(new TypeToken<UserInfoBean>(){}.getType()).seturllisenter(listenter).start();
   }
+
 
     /**
      * 示例1  测试百度接口调用；（默认返回String类型的数据）

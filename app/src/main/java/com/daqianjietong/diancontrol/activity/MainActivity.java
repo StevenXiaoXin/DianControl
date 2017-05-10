@@ -1,12 +1,12 @@
 package com.daqianjietong.diancontrol.activity;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.daqianjietong.diancontrol.BaseActivity;
 import com.daqianjietong.diancontrol.R;
 
 import org.xutils.view.annotation.ContentView;
@@ -16,7 +16,7 @@ import org.xutils.view.annotation.ViewInject;
  * 首页
  */
 @ContentView(R.layout.activity_main)
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+public class MainActivity extends BaseActivity implements View.OnClickListener{
     @ViewInject(R.id.iv_back)
     private ImageView iv_back;
     @ViewInject(R.id.tv_title)
@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void initData() {
         iv_back.setVisibility(View.GONE);
-        tv_title.setText("首页");
+        tv_title.setText(R.string.main);
         btn_order_park.setOnClickListener(this);
         btn_park_list.setOnClickListener(this);
         btn_quick_park.setOnClickListener(this);

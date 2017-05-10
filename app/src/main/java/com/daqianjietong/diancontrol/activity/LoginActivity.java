@@ -68,7 +68,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
             userName=et_user_name.getText().toString();
             password=et_user_password.getText().toString();
             if (EmptyUtils.isEmpty(userName) || EmptyUtils.isEmpty(password)) {
-                Toast.makeText(context, "请输入用户名或密码", Toast.LENGTH_LONG).show();
+                Toast.makeText(context, "请输入用户名或密码", Toast.LENGTH_SHORT).show();
             } else {
                 login();
             }
@@ -79,14 +79,19 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
         Api.getInstance().login(userName,password,new HttpUtil.URLListenter<UserInfoBean>() {
             @Override
             public void onsucess(UserInfoBean userInfoBean) throws Exception {
-                Toast.makeText(getApplicationContext(),"登录成功",Toast.LENGTH_SHORT).show();
-                Toast.makeText(getApplicationContext(),userInfoBean.toString(),Toast.LENGTH_SHORT).show();
-                SharedPreferencesUtil.saveData(act, "userName", userName);
-                SharedPreferencesUtil.saveData(act, "password", password);
-                SharedPreferencesUtil.saveData(act, "uid", userInfoBean.getData().getUid());
-                SharedPreferencesUtil.saveData(act, "token", userInfoBean.getData().getToken());
-                JumpActivityUtils.Jump2Activity(act, MainActivity.class);
-                act.finish();
+//                Toast.makeText(getApplicationContext(),"登录成功",Toast.LENGTH_SHORT).show();
+                if (userInfoBean.getCode() == 1) {
+                    Log.e("解析列表数据OK---》",userInfoBean.toString());
+                    SharedPreferencesUtil.saveData(act, "userName", userName);
+                    SharedPreferencesUtil.saveData(act, "password", password);
+                    SharedPreferencesUtil.saveData(act, "uid", userInfoBean.getData().getUid());
+                    SharedPreferencesUtil.saveData(act, "token", userInfoBean.getData().getToken());
+                    JumpActivityUtils.Jump2Activity(act, MainActivity.class);
+                    act.finish();
+                } else if (userInfoBean.getCode() == 0) {
+                    Toast.makeText(getApplicationContext(),userInfoBean.getMessage(),Toast.LENGTH_SHORT).show();
+                }
+
             }
             @Override
             public void onfaild(String error) {
