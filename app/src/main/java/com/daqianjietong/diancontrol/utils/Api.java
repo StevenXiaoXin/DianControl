@@ -1,6 +1,7 @@
 package com.daqianjietong.diancontrol.utils;
 
 
+import com.daqianjietong.diancontrol.bean.PersonalInfoBean;
 import com.daqianjietong.diancontrol.bean.UserInfoBean;
 import com.google.gson.reflect.TypeToken;
 
@@ -54,7 +55,7 @@ public class Api {
     }
 
     /**
-     * 示例  登陆接口调用；
+     *登陆接口调用；
      * @param username
      * @param password
      * @param listenter
@@ -65,6 +66,18 @@ public class Api {
       params.put("txt_password",password);
       HttpUtil httpUtil = new HttpUtil();
       httpUtil.setUrl(HOST+LOGIN).setMethod(API_METHOD.GET).setParams(params).setTypetoken(new TypeToken<UserInfoBean>(){}.getType()).seturllisenter(listenter).start();
+  }
+
+  /**
+     * 个人中心接口调用；
+     * @param txt_userid
+     * @param listenter
+     */
+  public  void getPersonal(int txt_userid, HttpUtil.URLListenter<PersonalInfoBean> listenter){
+      Map<String,Integer> params = new HashMap<>();
+      params.put("txt_userid",txt_userid);
+      HttpUtil httpUtil = new HttpUtil();
+      httpUtil.setUrl(HOST+PERSIONAL).setMethod(API_METHOD.GET).setParams(params).setTypetoken(new TypeToken<PersonalInfoBean>(){}.getType()).seturllisenter(listenter).start();
   }
 
 

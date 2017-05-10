@@ -1,5 +1,7 @@
 package com.daqianjietong.diancontrol.activity;
 
+import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
@@ -8,6 +10,7 @@ import android.widget.TextView;
 
 import com.daqianjietong.diancontrol.BaseActivity;
 import com.daqianjietong.diancontrol.R;
+import com.daqianjietong.diancontrol.utils.JumpActivityUtils;
 
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.ViewInject;
@@ -35,9 +38,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
     private TextView tv_order_num;
     @ViewInject(R.id.tv_list_num)
     private TextView tv_list_num;
+    private Activity act;
+    private Context context;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        act=this;
+        context = this;
         initData();
 
     }
@@ -63,6 +70,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
             case R.id.btn_quick_park:
                 break;
             case R.id.btn_personal_center:
+                JumpActivityUtils.Jump2Activity(act,PersonalCenterActivity.class);
+                act.finish();
                 break;
             case R.id.btn_receipt:
                 break;

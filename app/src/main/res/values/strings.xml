@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">点点</string>
     <string name="main">首\u3000\u3000\u3000页</string>
+    <string name="user_name">用\u2000户\u2000名：</string>
 </resources>

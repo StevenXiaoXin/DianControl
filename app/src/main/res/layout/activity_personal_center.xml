@@ -2,6 +2,76 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
+              android:background="@color/background_color"
               android:layout_height="match_parent">
+    <include layout="@layout/title_bar"/>
 
+    <LinearLayout
+        android:id="@+id/ll_user_info"
+        android:layout_marginTop="@dimen/small_margin"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@color/background_edit"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        >
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/user_name"
+            android:textColor="@color/text_color"
+            android:textSize="16sp"
+            android:layout_marginLeft="@dimen/small_margin"
+
+            />
+        <TextView
+            android:id="@+id/tv_user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_color"
+            android:textSize="16sp"
+            android:layout_marginRight="@dimen/small_margin"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/ll_change_psd"
+        android:layout_marginTop="@dimen/more_small_margin"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@color/background_edit"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        >
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/user_name"
+            android:textColor="@color/text_color"
+            android:textSize="16sp"
+            android:layout_marginLeft="@dimen/small_margin"
+
+            />
+        <ImageView
+            android:layout_width="@dimen/margin_top_edit"
+            android:layout_height="@dimen/margin_top_edit"
+            android:src="@mipmap/iv_arrow_right"
+            android:layout_marginRight="@dimen/small_margin"
+            />
+    </LinearLayout>
+    <Button
+        android:id="@+id/btn_login_out"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:text="退出登录"
+        android:textColor="@color/background_edit"
+        android:textSize="16sp"
+        android:gravity="center"
+        android:paddingLeft="@dimen/small_padding"
+        android:paddingRight="@dimen/small_padding"
+        android:layout_marginTop="@dimen/margin_top_btn"
+        android:background="@drawable/btn_background"
+        android:layout_gravity="center_horizontal"
+        />
 </LinearLayout>
