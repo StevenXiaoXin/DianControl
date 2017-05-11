@@ -64,16 +64,24 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_order_park:
+                JumpActivityUtils.Jump2Activity(act,OrderParkActivity.class);
+                act.finish();
                 break;
             case R.id.btn_park_list:
+                JumpActivityUtils.Jump2Activity(act,ParkListActivity.class);
+                act.finish();
                 break;
             case R.id.btn_quick_park:
+                JumpActivityUtils.Jump2Activity(act,QuickParkActivity.class);
+                act.finish();
                 break;
             case R.id.btn_personal_center:
                 JumpActivityUtils.Jump2Activity(act,PersonalCenterActivity.class);
                 act.finish();
                 break;
             case R.id.btn_receipt:
+                JumpActivityUtils.Jump2Activity(act,ReceiptActivity.class);
+                act.finish();
                 break;
 
         }

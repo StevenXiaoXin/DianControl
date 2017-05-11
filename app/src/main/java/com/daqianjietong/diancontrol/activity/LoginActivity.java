@@ -62,7 +62,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
         btn_login.setOnClickListener(this);
     }
 
-
     private void doLogin() {
 
             userName=et_user_name.getText().toString();
@@ -70,6 +69,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
             if (EmptyUtils.isEmpty(userName) || EmptyUtils.isEmpty(password)) {
                 Toast.makeText(context, "请输入用户名或密码", Toast.LENGTH_SHORT).show();
             } else {
+                btn_login.setClickable(false);
                 login();
             }
 
@@ -89,13 +89,14 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
                     JumpActivityUtils.Jump2Activity(act, MainActivity.class);
                     act.finish();
                 } else if (userInfoBean.getCode() == 0) {
+                    btn_login.setClickable(true);
                     Toast.makeText(getApplicationContext(),userInfoBean.getMessage(),Toast.LENGTH_SHORT).show();
                 }
-
             }
             @Override
             public void onfaild(String error) {
                 Toast.makeText(getApplicationContext(),error,Toast.LENGTH_SHORT).show();
+                btn_login.setClickable(true);
                 Log.e("解析列表数据失败---》",error);
             }
         });

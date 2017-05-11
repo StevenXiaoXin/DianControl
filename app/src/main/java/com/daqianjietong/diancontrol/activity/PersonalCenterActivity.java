@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -14,7 +15,6 @@ import android.widget.Toast;
 import com.daqianjietong.diancontrol.BaseActivity;
 import com.daqianjietong.diancontrol.R;
 import com.daqianjietong.diancontrol.bean.PersonalInfoBean;
-import com.daqianjietong.diancontrol.bean.UserInfoBean;
 import com.daqianjietong.diancontrol.utils.Api;
 import com.daqianjietong.diancontrol.utils.HttpUtil;
 import com.daqianjietong.diancontrol.utils.JumpActivityUtils;
@@ -38,6 +38,8 @@ public class PersonalCenterActivity extends BaseActivity implements View.OnClick
     private TextView tv_user_name;
     @ViewInject(R.id.ll_change_psd)
     private LinearLayout ll_change_psd;
+    @ViewInject(R.id.btn_login_out)
+    private Button btn_login_out;
 
     private Activity act;
     private Context context;
@@ -51,12 +53,13 @@ public class PersonalCenterActivity extends BaseActivity implements View.OnClick
 
     private void initData() {
         ll_change_psd.setOnClickListener(this);
+        iv_back.setOnClickListener(this);
+        btn_login_out.setOnClickListener(this);
     }
     private void getHttp() {
         Api.getInstance().getPersonal(1,new HttpUtil.URLListenter<PersonalInfoBean>() {
             @Override
             public void onsucess(PersonalInfoBean personalInfoBean) throws Exception {
-//                Toast.makeText(getApplicationContext(),"登录成功",Toast.LENGTH_SHORT).show();
                 if (personalInfoBean.getCode() == 1) {
                     Log.e("解析列表数据OK---》",personalInfoBean.toString());
                     JumpActivityUtils.Jump2Activity(act, MainActivity.class);
@@ -76,6 +79,22 @@ public class PersonalCenterActivity extends BaseActivity implements View.OnClick
     }
     @Override
     public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.ll_change_psd:
 
+                break;
+            case R.id.iv_back:
+                JumpActivityUtils.Jump2Activity(act, MainActivity.class);
+                act.finish();
+                break;
+            case R.id.btn_login_out:
+                SharedPreferencesUtil.saveData(act, "userName", "");
+                SharedPreferencesUtil.saveData(act, "password", "");
+                SharedPreferencesUtil.saveData(act, "uid", "");
+                SharedPreferencesUtil.saveData(act, "token", "");
+                JumpActivityUtils.Jump2Activity(act, LoginActivity.class);
+                act.finish();
+                break;
+        }
     }
 }
