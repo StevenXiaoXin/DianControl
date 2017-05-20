@@ -1,11 +1,9 @@
 package com.daqianjietong.diancontrol.utils;
 
-import android.widget.Toast;
 
 import com.google.gson.Gson;
 
 import org.xutils.common.Callback;
-import org.xutils.ex.HttpException;
 import org.xutils.http.RequestParams;
 import org.xutils.x;
 

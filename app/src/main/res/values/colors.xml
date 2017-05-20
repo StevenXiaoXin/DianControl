@@ -3,14 +3,10 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
-    <color name="background_color">#e8e4ea</color>//灰白色
-    <color name="background_edit">#ffffff</color>//纯白
-    <color name="red_button">#d43b33</color>//按钮红色
-    <color name="text_color">#bfbfbf</color>//40%灰
-    <color name="text_color_black">#000000</color>//黑
-    <color name="btn_color_yellow">#ffbe2e</color>//黄
-    <color name="btn_color_orange">#ff997f</color>//橙色
-    <color name="btn_color_pink">#fcbed4</color>//粉色
-    <color name="btn_color_purple">#d4aafe</color>//紫色
-    <color name="btn_color_blue">#68aeff</color>//蓝色
+    <color name="background">#eeeeee</color>
+    <color name="white">#ffffff</color>
+    <color name="head_bg">#d43b33</color>
+    <color name="transparent">#00000000</color>
+    <color name="black">#000</color>
+    <color name="text_color">#bfbfbf</color>
 </resources>
