@@ -52,13 +52,8 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
         }
         initData();
     }
-
     private void initData() {
-        userName=(String) SharedPreferencesUtil.getData(LoginActivity.this, "loginName", "");
-        password=(String) SharedPreferencesUtil.getData(LoginActivity.this, "password", "");
-        if (!EmptyUtils.isEmpty(userName)&& !EmptyUtils.isEmpty(password)) {
-            login();
-        }
+
         btn_login.setOnClickListener(this);
     }
 
@@ -79,13 +74,16 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
         Api.getInstance().login(userName,password,new HttpUtil.URLListenter<UserInfoBean>() {
             @Override
             public void onsucess(UserInfoBean userInfoBean) throws Exception {
-//                Toast.makeText(getApplicationContext(),"登录成功",Toast.LENGTH_SHORT).show();
                 if (userInfoBean.getCode() == 1) {
                     Log.e("解析列表数据OK---》",userInfoBean.toString());
                     SharedPreferencesUtil.saveData(act, "userName", userName);
                     SharedPreferencesUtil.saveData(act, "password", password);
                     SharedPreferencesUtil.saveData(act, "uid", userInfoBean.getData().getUid());
                     SharedPreferencesUtil.saveData(act, "token", userInfoBean.getData().getToken());
+                    SharedPreferencesUtil.saveData(act, "photo", userInfoBean.getData().getPu_photo());
+                    SharedPreferencesUtil.saveData(act, "phone", userInfoBean.getData().getPu_phone());
+                    SharedPreferencesUtil.saveData(act, "parkname", userInfoBean.getData().getPu_parkname());
+                    SharedPreferencesUtil.saveData(act, "parkid", userInfoBean.getData().getPu_parkid());
                     JumpActivityUtils.Jump2Activity(act, MainActivity.class);
                     act.finish();
                 } else if (userInfoBean.getCode() == 0) {

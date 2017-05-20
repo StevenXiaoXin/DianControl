@@ -2,6 +2,7 @@ package com.daqianjietong.diancontrol.activity;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
@@ -11,6 +12,8 @@ import android.widget.TextView;
 import com.daqianjietong.diancontrol.BaseActivity;
 import com.daqianjietong.diancontrol.R;
 import com.daqianjietong.diancontrol.utils.JumpActivityUtils;
+import com.daqianjietong.diancontrol.utils.SharedPreferencesUtil;
+import com.daqianjietong.diancontrol.utils.ToosUtils;
 
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.ViewInject;
@@ -52,6 +55,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
     private void initData() {
         iv_back.setVisibility(View.GONE);
         tv_title.setText(R.string.main);
+        if (ToosUtils.isStringEmpty((String) SharedPreferencesUtil.getData(context,"token",""))){
+            Intent intent=new Intent(this,LoginActivity.class);
+            startActivity(intent);
+            act.finish();
+        }
         btn_order_park.setOnClickListener(this);
         btn_park_list.setOnClickListener(this);
         btn_quick_park.setOnClickListener(this);
