@@ -32,4 +32,5 @@ dependencies {
     compile 'com.android.support:design:25.3.0'
     testCompile 'junit:junit:4.12'
     compile files('libs/BASE64.jar')
+    compile project(':library')
 }

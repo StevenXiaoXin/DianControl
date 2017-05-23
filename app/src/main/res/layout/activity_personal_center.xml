@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
-              android:background="@color/background_color"
+              android:background="@color/background"
               android:layout_height="match_parent">
     <include layout="@layout/title_bar"/>
 
@@ -11,7 +11,7 @@
         android:layout_marginTop="@dimen/small_margin"
         android:layout_width="match_parent"
         android:layout_height="45dp"
-        android:background="@color/background_edit"
+        android:background="@color/white"
         android:orientation="horizontal"
         android:gravity="center_vertical"
         >
@@ -39,7 +39,7 @@
         android:layout_marginTop="@dimen/more_small_margin"
         android:layout_width="match_parent"
         android:layout_height="45dp"
-        android:background="@color/background_edit"
+        android:background="@color/white"
         android:orientation="horizontal"
         android:gravity="center_vertical"
         >
@@ -65,7 +65,7 @@
         android:layout_width="wrap_content"
         android:layout_height="45dp"
         android:text="退出登录"
-        android:textColor="@color/background_edit"
+        android:textColor="@color/white"
         android:textSize="16sp"
         android:gravity="center"
         android:paddingLeft="@dimen/small_padding"

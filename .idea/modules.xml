@@ -4,6 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/DianControl.iml" filepath="$PROJECT_DIR$/DianControl.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/library/library.iml" filepath="$PROJECT_DIR$/library/library.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pushtore/pushtore.iml" filepath="$PROJECT_DIR$/pushtore/pushtore.iml" />
     </modules>
   </component>
 </project>

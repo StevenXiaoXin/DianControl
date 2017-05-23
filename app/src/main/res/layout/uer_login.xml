@@ -4,7 +4,7 @@
               android:layout_height="match_parent"
               android:gravity="center"
               android:orientation="vertical"
-              android:background="@color/background_color"
+              android:background="@color/background"
     >
 
     <EditText
@@ -38,7 +38,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/edittext_hight"
         android:text="登                  录"
-        android:textColor="@color/background_edit"
+        android:textColor="@color/white"
         android:layout_marginRight="@dimen/margin_right"
         android:layout_marginLeft="@dimen/margin_left"
         android:background="@drawable/btn_background"

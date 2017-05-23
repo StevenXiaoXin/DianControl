@@ -6,7 +6,7 @@
             xmlns:android="http://schemas.android.com/apk/res/android"
             android:shape="oval">
             <solid
-                android:color="@color/red_button"/>//填充色
+                android:color="@color/head_bg"/>//填充色
 
         </shape>
     </item>
