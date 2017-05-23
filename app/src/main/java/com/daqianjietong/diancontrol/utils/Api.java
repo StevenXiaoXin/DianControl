@@ -1,6 +1,8 @@
 package com.daqianjietong.diancontrol.utils;
 
 
+import android.util.Log;
+
 import com.daqianjietong.diancontrol.bean.OrderInfo;
 import com.daqianjietong.diancontrol.bean.PersonalInfoBean;
 import com.daqianjietong.diancontrol.bean.UserInfoBean;
@@ -93,6 +95,7 @@ public class Api {
       params.put("txt_parknum",txt_parknum);
       HttpUtil httpUtil = new HttpUtil();
       httpUtil.setUrl(HOST+ORDERLIST).setMethod(API_METHOD.GET).setParams(params).setTypetoken(new TypeToken<OrderInfo>(){}.getType()).seturllisenter(listenter).start();
+
   }
 
 

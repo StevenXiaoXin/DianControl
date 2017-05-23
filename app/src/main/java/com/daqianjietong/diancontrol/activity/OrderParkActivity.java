@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
@@ -61,6 +62,7 @@ public class OrderParkActivity extends BaseActivity {
 
     private void initView() {
         parkingIndex(1,(String)SharedPreferencesUtil.getData(context,"parkid",""),null);
+
     }
 
     private void initData() {
@@ -78,7 +80,7 @@ public class OrderParkActivity extends BaseActivity {
             @Override
             public void onRefresh(PullToRefreshBase<ListView> refreshView) {
                 if (refreshView.getCurrentMode().equals(PullToRefreshBase.Mode.PULL_FROM_START)) {
-                    parkingIndex(1, (String)SharedPreferencesUtil.getData(context,"parkid",""),null);
+                    parkingIndex(1, (String)SharedPreferencesUtil.getData(context,"parkid",1),null);
                 } else if (refreshView.getCurrentMode().equals(PullToRefreshBase.Mode.PULL_FROM_END)) {
                     parkingIndex(pageIndex + 1, (String)SharedPreferencesUtil.getData(context,"parkid",""),null);
                 }
@@ -89,9 +91,11 @@ public class OrderParkActivity extends BaseActivity {
     }
 
     public void parkingIndex(final int pageNo, String txt_parkid,String txt_parknum) {
+
         Api.getInstance().getOrderList(txt_parkid, String.valueOf(pageNo), txt_parknum, new HttpUtil.URLListenter<OrderInfo>() {
             @Override
             public void onsucess(OrderInfo orderInfo) throws Exception {
+                Log.e("dsadasdas","zouzhel");
                 pullToRefreshListView.onRefreshComplete();
                 if (pageNo == 1) {
                     partEntities.clear();
@@ -108,6 +112,7 @@ public class OrderParkActivity extends BaseActivity {
 
             @Override
             public void onfaild(String error) {
+                Log.e("-------","zouzhel");
                 Toast.makeText(act,error,Toast.LENGTH_SHORT).show();
                 pullToRefreshListView.onRefreshComplete();
             }
