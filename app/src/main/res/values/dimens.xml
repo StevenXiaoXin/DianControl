@@ -27,7 +27,11 @@
     <dimen name="main_viewgroup">112dp</dimen>
     <dimen name="main_viewpager_image">65dp</dimen>
     <dimen name="rl_height">130dp</dimen>
-
+    <dimen name="title_font">20sp</dimen>
+    <dimen name="first_font">16sp</dimen>
+    <dimen name="second_font">14sp</dimen>
+    <dimen name="thrid_font">12sp</dimen>
+    <dimen name="side_letter_bar_width">36dp</dimen>
 
 
 

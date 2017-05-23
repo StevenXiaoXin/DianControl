@@ -1,12 +1,14 @@
 package com.daqianjietong.diancontrol.utils;
 
 
+import com.daqianjietong.diancontrol.bean.OrderInfo;
 import com.daqianjietong.diancontrol.bean.PersonalInfoBean;
 import com.daqianjietong.diancontrol.bean.UserInfoBean;
 import com.google.gson.reflect.TypeToken;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -78,6 +80,19 @@ public class Api {
       params.put("txt_userid",txt_userid);
       HttpUtil httpUtil = new HttpUtil();
       httpUtil.setUrl(HOST+PERSIONAL).setMethod(API_METHOD.GET).setParams(params).setTypetoken(new TypeToken<PersonalInfoBean>(){}.getType()).seturllisenter(listenter).start();
+  }
+/**
+     * 预约列表接口调用；
+     * @param txt_parkid
+     * @param listenter
+     */
+  public  void getOrderList(String txt_parkid,String p,String txt_parknum, HttpUtil.URLListenter<OrderInfo> listenter){
+      Map<String,String> params = new HashMap<>();
+      params.put("txt_userid",String.valueOf(txt_parkid));
+      params.put("p",String.valueOf(p));
+      params.put("txt_parknum",txt_parknum);
+      HttpUtil httpUtil = new HttpUtil();
+      httpUtil.setUrl(HOST+ORDERLIST).setMethod(API_METHOD.GET).setParams(params).setTypetoken(new TypeToken<OrderInfo>(){}.getType()).seturllisenter(listenter).start();
   }
 
 
