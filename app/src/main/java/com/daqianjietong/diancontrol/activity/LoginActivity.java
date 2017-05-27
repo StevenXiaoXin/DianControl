@@ -84,6 +84,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
                     SharedPreferencesUtil.saveData(act, "phone", userInfoBean.getData().getPu_phone());
                     SharedPreferencesUtil.saveData(act, "parkname", userInfoBean.getData().getPu_parkname());
                     SharedPreferencesUtil.saveData(act, "parkid", userInfoBean.getData().getPu_parkid());
+                    Log.e("dsadasdas",userInfoBean.getData().getToken());
                     JumpActivityUtils.Jump2Activity(act, MainActivity.class);
                     act.finish();
                 } else if (userInfoBean.getCode() == 0) {

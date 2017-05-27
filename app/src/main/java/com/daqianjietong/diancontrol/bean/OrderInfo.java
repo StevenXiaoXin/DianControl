@@ -86,6 +86,12 @@ public class OrderInfo  implements Serializable {
         }
     }
 
-
-
+    @Override
+    public String toString() {
+        return "OrderInfo{" +
+                "code=" + code +
+                ", data=" + data +
+                ", message='" + message + '\'' +
+                '}';
+    }
 }

@@ -59,7 +59,7 @@ public  class SharedPreferencesUtil {
         if(type.equals("Integer")){
         	return sp.getInt(key, (Integer)defValue); 
         }else if(type.equals("Boolean")){
-        	return sp.getBoolean(key, (Boolean)defValue); 
+        	return sp.getBoolean(key, (Boolean)defValue);
         }else if(type.equals("String")){
         	return sp.getString(key, (String)defValue); 
         }else if(type.equals("Float")){

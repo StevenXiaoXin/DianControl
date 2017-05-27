@@ -26,8 +26,12 @@ import com.daqianjietong.diancontrol.utils.ToosUtils;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 
+import org.xutils.common.Callback;
+import org.xutils.ex.HttpException;
+import org.xutils.http.RequestParams;
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.ViewInject;
+import org.xutils.x;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -61,7 +65,7 @@ public class OrderParkActivity extends BaseActivity {
     }
 
     private void initView() {
-        parkingIndex(1,(String)SharedPreferencesUtil.getData(context,"parkid",""),null);
+        parkingIndex(1,(String)SharedPreferencesUtil.getData(context,"parkid",""),"");
 
     }
 
@@ -80,9 +84,9 @@ public class OrderParkActivity extends BaseActivity {
             @Override
             public void onRefresh(PullToRefreshBase<ListView> refreshView) {
                 if (refreshView.getCurrentMode().equals(PullToRefreshBase.Mode.PULL_FROM_START)) {
-                    parkingIndex(1, (String)SharedPreferencesUtil.getData(context,"parkid",1),null);
+                    parkingIndex(1, (String)SharedPreferencesUtil.getData(context,"parkid",""),"");
                 } else if (refreshView.getCurrentMode().equals(PullToRefreshBase.Mode.PULL_FROM_END)) {
-                    parkingIndex(pageIndex + 1, (String)SharedPreferencesUtil.getData(context,"parkid",""),null);
+                    parkingIndex(pageIndex + 1, (String)SharedPreferencesUtil.getData(context,"parkid",""),"");
                 }
 
             }
@@ -90,21 +94,25 @@ public class OrderParkActivity extends BaseActivity {
 
     }
 
+
     public void parkingIndex(final int pageNo, String txt_parkid,String txt_parknum) {
 
         Api.getInstance().getOrderList(txt_parkid, String.valueOf(pageNo), txt_parknum, new HttpUtil.URLListenter<OrderInfo>() {
             @Override
             public void onsucess(OrderInfo orderInfo) throws Exception {
-                Log.e("dsadasdas","zouzhel");
+
+                Log.e("result",orderInfo.toString());
+                Log.e("token",(String)SharedPreferencesUtil.getData(context,"token",""));
+
                 pullToRefreshListView.onRefreshComplete();
                 if (pageNo == 1) {
                     partEntities.clear();
                     mOrderListAdapter.notifyDataSetChanged();
                 }
                 pageIndex=pageNo;
-                if (partEntities!=null){
-                    for (OrderInfo.Data partEntity:partEntities){
-                        partEntities.add(partEntity);
+                if (orderInfo.getData()!=null){
+                    for (int i=0;i<orderInfo.getData().size();i++){
+                        partEntities.add(orderInfo.getData().get(i));
                     }
                 }
                 mOrderListAdapter.notifyDataSetChanged();
@@ -112,11 +120,10 @@ public class OrderParkActivity extends BaseActivity {
 
             @Override
             public void onfaild(String error) {
-                Log.e("-------","zouzhel");
                 Toast.makeText(act,error,Toast.LENGTH_SHORT).show();
                 pullToRefreshListView.onRefreshComplete();
             }
-        });
+        },context);
 
     }
 

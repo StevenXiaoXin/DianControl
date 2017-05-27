@@ -75,7 +75,7 @@ public class PersonalCenterActivity extends BaseActivity implements View.OnClick
                 Toast.makeText(getApplicationContext(),error,Toast.LENGTH_SHORT).show();
                 Log.e("解析列表数据失败---》",error);
             }
-        });
+        },context);
     }
     @Override
     public void onClick(View v) {

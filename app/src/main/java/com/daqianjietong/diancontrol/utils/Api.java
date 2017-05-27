@@ -1,6 +1,7 @@
 package com.daqianjietong.diancontrol.utils;
 
 
+import android.content.Context;
 import android.util.Log;
 
 import com.daqianjietong.diancontrol.bean.OrderInfo;
@@ -77,9 +78,10 @@ public class Api {
      * @param txt_userid
      * @param listenter
      */
-  public  void getPersonal(int txt_userid, HttpUtil.URLListenter<PersonalInfoBean> listenter){
-      Map<String,Integer> params = new HashMap<>();
-      params.put("txt_userid",txt_userid);
+  public  void getPersonal(int txt_userid, HttpUtil.URLListenter<PersonalInfoBean> listenter,Context context){
+      Map<String,String> params = new HashMap<>();
+      params.put("txt_userid",String.valueOf(txt_userid));
+      params.put("token",(String)SharedPreferencesUtil.getData(context,"token",""));
       HttpUtil httpUtil = new HttpUtil();
       httpUtil.setUrl(HOST+PERSIONAL).setMethod(API_METHOD.GET).setParams(params).setTypetoken(new TypeToken<PersonalInfoBean>(){}.getType()).seturllisenter(listenter).start();
   }
@@ -88,11 +90,13 @@ public class Api {
      * @param txt_parkid
      * @param listenter
      */
-  public  void getOrderList(String txt_parkid,String p,String txt_parknum, HttpUtil.URLListenter<OrderInfo> listenter){
+  public  void getOrderList(String txt_parkid, String p, String txt_parknum, HttpUtil.URLListenter<OrderInfo> listenter, Context context){
       Map<String,String> params = new HashMap<>();
-      params.put("txt_userid",String.valueOf(txt_parkid));
+      params.put("txt_parkid",String.valueOf(txt_parkid));
       params.put("p",String.valueOf(p));
       params.put("txt_parknum",txt_parknum);
+      params.put("token",(String)SharedPreferencesUtil.getData(context,"token",""));
+      Log.e("txt_parkid",String.valueOf(txt_parkid)+"---------"+String.valueOf(p)+"-------"+txt_parknum);
       HttpUtil httpUtil = new HttpUtil();
       httpUtil.setUrl(HOST+ORDERLIST).setMethod(API_METHOD.GET).setParams(params).setTypetoken(new TypeToken<OrderInfo>(){}.getType()).seturllisenter(listenter).start();
 
