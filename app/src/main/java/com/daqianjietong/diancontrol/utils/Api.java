@@ -4,6 +4,7 @@ package com.daqianjietong.diancontrol.utils;
 import android.content.Context;
 import android.util.Log;
 
+import com.daqianjietong.diancontrol.bean.GetMessageBean;
 import com.daqianjietong.diancontrol.bean.OrderInfo;
 import com.daqianjietong.diancontrol.bean.PersonalInfoBean;
 import com.daqianjietong.diancontrol.bean.UserInfoBean;
@@ -75,12 +76,11 @@ public class Api {
 
   /**
      * 个人中心接口调用；
-     * @param txt_userid
      * @param listenter
      */
-  public  void getPersonal(int txt_userid, HttpUtil.URLListenter<PersonalInfoBean> listenter,Context context){
+  public  void getPersonal( HttpUtil.URLListenter<PersonalInfoBean> listenter,Context context){
       Map<String,String> params = new HashMap<>();
-      params.put("txt_userid",String.valueOf(txt_userid));
+      params.put("txt_userid",(String)SharedPreferencesUtil.getData(context,"uid","1"));
       params.put("token",(String)SharedPreferencesUtil.getData(context,"token",""));
       HttpUtil httpUtil = new HttpUtil();
       httpUtil.setUrl(HOST+PERSIONAL).setMethod(API_METHOD.GET).setParams(params).setTypetoken(new TypeToken<PersonalInfoBean>(){}.getType()).seturllisenter(listenter).start();
@@ -96,9 +96,24 @@ public class Api {
       params.put("p",String.valueOf(p));
       params.put("txt_parknum",txt_parknum);
       params.put("token",(String)SharedPreferencesUtil.getData(context,"token",""));
-      Log.e("txt_parkid",String.valueOf(txt_parkid)+"---------"+String.valueOf(p)+"-------"+txt_parknum);
       HttpUtil httpUtil = new HttpUtil();
       httpUtil.setUrl(HOST+ORDERLIST).setMethod(API_METHOD.GET).setParams(params).setTypetoken(new TypeToken<OrderInfo>(){}.getType()).seturllisenter(listenter).start();
+
+  }
+  /**
+     * 修改密码接口调用；
+     * @param listenter
+     */
+  public  void upPassword(String old_pass, String new_pass,  HttpUtil.URLListenter<GetMessageBean> listenter, Context context){
+      Map<String,String> params = new HashMap<>();
+      params.put("txt_userid",(String)SharedPreferencesUtil.getData(context,"uid","1"));
+      params.put("old_pass",old_pass);
+      params.put("new_pass",new_pass);
+      params.put("token",(String)SharedPreferencesUtil.getData(context,"token",""));
+
+      Log.e("updata",params.toString());
+      HttpUtil httpUtil = new HttpUtil();
+      httpUtil.setUrl(HOST+CHANGEPSD).setMethod(API_METHOD.GET).setParams(params).setTypetoken(new TypeToken<GetMessageBean>(){}.getType()).seturllisenter(listenter).start();
 
   }
 

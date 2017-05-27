@@ -72,6 +72,7 @@ public class OrderParkActivity extends BaseActivity {
     private void initData() {
         mOrderListAdapter=new OrderListAdapter(context,partEntities);
         pullToRefreshListView.setAdapter(mOrderListAdapter);
+        tv_title.setText("预约车位");
         iv_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -96,13 +97,11 @@ public class OrderParkActivity extends BaseActivity {
 
 
     public void parkingIndex(final int pageNo, String txt_parkid,String txt_parknum) {
-
+            showDialog();
         Api.getInstance().getOrderList(txt_parkid, String.valueOf(pageNo), txt_parknum, new HttpUtil.URLListenter<OrderInfo>() {
             @Override
             public void onsucess(OrderInfo orderInfo) throws Exception {
-
-                Log.e("result",orderInfo.toString());
-                Log.e("token",(String)SharedPreferencesUtil.getData(context,"token",""));
+                dissDialog();
 
                 pullToRefreshListView.onRefreshComplete();
                 if (pageNo == 1) {
@@ -110,16 +109,19 @@ public class OrderParkActivity extends BaseActivity {
                     mOrderListAdapter.notifyDataSetChanged();
                 }
                 pageIndex=pageNo;
-                if (orderInfo.getData()!=null){
-                    for (int i=0;i<orderInfo.getData().size();i++){
+                if (orderInfo.getData() != null) {
+                    for (int i = 0; i < orderInfo.getData().size(); i++) {
                         partEntities.add(orderInfo.getData().get(i));
                     }
+                } else {
+                    Toast.makeText(act,"没有更多数据",Toast.LENGTH_SHORT).show();
                 }
                 mOrderListAdapter.notifyDataSetChanged();
             }
 
             @Override
             public void onfaild(String error) {
+                dissDialog();
                 Toast.makeText(act,error,Toast.LENGTH_SHORT).show();
                 pullToRefreshListView.onRefreshComplete();
             }

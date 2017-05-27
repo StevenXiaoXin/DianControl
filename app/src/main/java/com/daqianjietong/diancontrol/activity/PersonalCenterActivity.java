@@ -52,18 +52,19 @@ public class PersonalCenterActivity extends BaseActivity implements View.OnClick
     }
 
     private void initData() {
+        getHttp();
         ll_change_psd.setOnClickListener(this);
         iv_back.setOnClickListener(this);
         btn_login_out.setOnClickListener(this);
     }
     private void getHttp() {
-        Api.getInstance().getPersonal(1,new HttpUtil.URLListenter<PersonalInfoBean>() {
+        showDialog();
+        Api.getInstance().getPersonal(new HttpUtil.URLListenter<PersonalInfoBean>() {
             @Override
             public void onsucess(PersonalInfoBean personalInfoBean) throws Exception {
+                dissDialog();
                 if (personalInfoBean.getCode() == 1) {
-                    Log.e("解析列表数据OK---》",personalInfoBean.toString());
-                    JumpActivityUtils.Jump2Activity(act, MainActivity.class);
-                    act.finish();
+                    tv_user_name.setText(personalInfoBean.getData().getPu_username());
                 } else if (personalInfoBean.getCode() == 0) {
                     Toast.makeText(getApplicationContext(),personalInfoBean.getMessage(),Toast.LENGTH_SHORT).show();
                 }
@@ -72,6 +73,7 @@ public class PersonalCenterActivity extends BaseActivity implements View.OnClick
 
             @Override
             public void onfaild(String error) {
+                dissDialog();
                 Toast.makeText(getApplicationContext(),error,Toast.LENGTH_SHORT).show();
                 Log.e("解析列表数据失败---》",error);
             }
@@ -81,7 +83,7 @@ public class PersonalCenterActivity extends BaseActivity implements View.OnClick
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.ll_change_psd:
-
+                JumpActivityUtils.Jump2Activity(act, UpdatePwdActivity.class);
                 break;
             case R.id.iv_back:
                 JumpActivityUtils.Jump2Activity(act, MainActivity.class);
@@ -96,5 +98,11 @@ public class PersonalCenterActivity extends BaseActivity implements View.OnClick
                 act.finish();
                 break;
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        JumpActivityUtils.Jump2Activity(act,MainActivity.class);
+        act.finish();
     }
 }
