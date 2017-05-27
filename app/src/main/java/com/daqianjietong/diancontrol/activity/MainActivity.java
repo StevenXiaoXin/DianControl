@@ -4,13 +4,19 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.daqianjietong.diancontrol.BaseActivity;
 import com.daqianjietong.diancontrol.R;
+import com.daqianjietong.diancontrol.bean.GetMainNumBean;
+import com.daqianjietong.diancontrol.utils.Api;
+import com.daqianjietong.diancontrol.utils.HttpUtil;
 import com.daqianjietong.diancontrol.utils.JumpActivityUtils;
 import com.daqianjietong.diancontrol.utils.SharedPreferencesUtil;
 import com.daqianjietong.diancontrol.utils.ToosUtils;
@@ -43,6 +49,17 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
     private TextView tv_list_num;
     private Activity act;
     private Context context;
+    public static boolean isForeground = false;
+
+    Handler handler1 = new Handler();
+    Runnable runnable = new Runnable() {
+        @Override
+        public void run() {
+            // 要做的事情
+            getNum();
+            handler1.postDelayed(this, 20000);// 20s刷新一次
+        }
+    };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -94,5 +111,45 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
 
         }
 
+    }
+    @Override
+    protected void onResume() {
+        isForeground = true;
+        super.onResume();
+        handler1.postDelayed(runnable, 0);
+    }
+
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        handler1.removeCallbacks(runnable);//小红点
+    }
+
+    public void getNum() {
+        Api.getInstance().getMainNum(new HttpUtil.URLListenter<GetMainNumBean>() {
+            @Override
+            public void onsucess(GetMainNumBean getMainNumBean) throws Exception {
+                if (!getMainNumBean.getData().getReservenum().equals("0")) {
+                    tv_order_num.setVisibility(View.VISIBLE);
+                    tv_order_num.setText(getMainNumBean.getData().getReservenum());
+                } else {
+                    tv_order_num.setVisibility(View.GONE);
+                }
+
+                if (!getMainNumBean.getData().getParknum().equals("0")) {
+                    tv_list_num.setVisibility(View.VISIBLE);
+                    tv_list_num.setText(getMainNumBean.getData().getReservenum());
+                } else {
+                    tv_list_num.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void onfaild(String error) {
+
+                Toast.makeText(context,"程序访问错误",Toast.LENGTH_SHORT).show();
+            }
+        },context);
     }
 }

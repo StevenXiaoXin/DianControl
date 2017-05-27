@@ -35,16 +35,18 @@
 
     <TextView
         android:id="@+id/tv_order_num"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:gravity="center"
         android:background="@drawable/textview_background"
-        android:text="12"
+        android:text="0"
         android:textSize="@dimen/text_size"
         android:padding="2dp"
         android:textColor="@color/white"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
         android:layout_margin="@dimen/activity_vertical_margin"
+        android:visibility="gone"
         />
 
 </RelativeLayout>
@@ -63,16 +65,18 @@
 
         <TextView
             android:id="@+id/tv_list_num"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:gravity="center"
             android:background="@drawable/textview_background"
-            android:text="12"
+            android:text="0"
             android:textSize="@dimen/text_size"
             android:padding="2dp"
             android:textColor="@color/white"
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
             android:layout_margin="@dimen/activity_vertical_margin"
+            android:visibility="gone"
             />
 
 </RelativeLayout>

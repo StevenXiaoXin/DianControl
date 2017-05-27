@@ -4,6 +4,7 @@ package com.daqianjietong.diancontrol.utils;
 import android.content.Context;
 import android.util.Log;
 
+import com.daqianjietong.diancontrol.bean.GetMainNumBean;
 import com.daqianjietong.diancontrol.bean.GetMessageBean;
 import com.daqianjietong.diancontrol.bean.OrderInfo;
 import com.daqianjietong.diancontrol.bean.PersonalInfoBean;
@@ -85,6 +86,18 @@ public class Api {
       HttpUtil httpUtil = new HttpUtil();
       httpUtil.setUrl(HOST+PERSIONAL).setMethod(API_METHOD.GET).setParams(params).setTypetoken(new TypeToken<PersonalInfoBean>(){}.getType()).seturllisenter(listenter).start();
   }
+
+  /**
+     * 首页数量接口调用；
+     * @param listenter
+     */
+  public  void getMainNum( HttpUtil.URLListenter<GetMainNumBean> listenter,Context context){
+      Map<String,String> params = new HashMap<>();
+      params.put("txt_parkid",(String)SharedPreferencesUtil.getData(context,"parkid","1"));
+      params.put("token",(String)SharedPreferencesUtil.getData(context,"token",""));
+      HttpUtil httpUtil = new HttpUtil();
+      httpUtil.setUrl(HOST+GETNUM).setMethod(API_METHOD.GET).setParams(params).setTypetoken(new TypeToken<GetMainNumBean>(){}.getType()).seturllisenter(listenter).start();
+  }
 /**
      * 预约列表接口调用；
      * @param txt_parkid
@@ -98,6 +111,21 @@ public class Api {
       params.put("token",(String)SharedPreferencesUtil.getData(context,"token",""));
       HttpUtil httpUtil = new HttpUtil();
       httpUtil.setUrl(HOST+ORDERLIST).setMethod(API_METHOD.GET).setParams(params).setTypetoken(new TypeToken<OrderInfo>(){}.getType()).seturllisenter(listenter).start();
+
+  }
+  /**
+     * 预约列表接口调用；
+     * @param txt_parkid
+     * @param listenter
+     */
+  public  void getParkList(String txt_parkid, String p, String txt_parknum, HttpUtil.URLListenter<OrderInfo> listenter, Context context){
+      Map<String,String> params = new HashMap<>();
+      params.put("txt_parkid",String.valueOf(txt_parkid));
+      params.put("p",String.valueOf(p));
+      params.put("txt_parknum",txt_parknum);
+      params.put("token",(String)SharedPreferencesUtil.getData(context,"token",""));
+      HttpUtil httpUtil = new HttpUtil();
+      httpUtil.setUrl(HOST+PARKLIST).setMethod(API_METHOD.GET).setParams(params).setTypetoken(new TypeToken<OrderInfo>(){}.getType()).seturllisenter(listenter).start();
 
   }
   /**
