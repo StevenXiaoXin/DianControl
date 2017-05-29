@@ -7,6 +7,7 @@ import android.util.Log;
 import com.daqianjietong.diancontrol.bean.GetMainNumBean;
 import com.daqianjietong.diancontrol.bean.GetMessageBean;
 import com.daqianjietong.diancontrol.bean.OrderInfo;
+import com.daqianjietong.diancontrol.bean.ParkListInfo;
 import com.daqianjietong.diancontrol.bean.PersonalInfoBean;
 import com.daqianjietong.diancontrol.bean.UserInfoBean;
 import com.google.gson.reflect.TypeToken;
@@ -118,14 +119,14 @@ public class Api {
      * @param txt_parkid
      * @param listenter
      */
-  public  void getParkList(String txt_parkid, String p, String txt_parknum, HttpUtil.URLListenter<OrderInfo> listenter, Context context){
+  public  void getParkList(String txt_parkid, String p, String txt_parknum, HttpUtil.URLListenter<ParkListInfo> listenter, Context context){
       Map<String,String> params = new HashMap<>();
       params.put("txt_parkid",String.valueOf(txt_parkid));
       params.put("p",String.valueOf(p));
       params.put("txt_parknum",txt_parknum);
       params.put("token",(String)SharedPreferencesUtil.getData(context,"token",""));
       HttpUtil httpUtil = new HttpUtil();
-      httpUtil.setUrl(HOST+PARKLIST).setMethod(API_METHOD.GET).setParams(params).setTypetoken(new TypeToken<OrderInfo>(){}.getType()).seturllisenter(listenter).start();
+      httpUtil.setUrl(HOST+PARKLIST).setMethod(API_METHOD.GET).setParams(params).setTypetoken(new TypeToken<ParkListInfo>(){}.getType()).seturllisenter(listenter).start();
 
   }
   /**

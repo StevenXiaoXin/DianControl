@@ -3,5 +3,19 @@
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
-
+    <include
+        layout="@layout/title_bar"/>
+    <com.handmark.pulltorefresh.library.PullToRefreshListView
+        android:id="@+id/park_list"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:cacheColorHint="#00000000"
+        android:fadingEdge="none"
+        android:dividerHeight="4dp"
+        android:divider="@color/background"
+        android:fastScrollEnabled="false"
+        android:scrollbars="none"
+        android:footerDividersEnabled="false"
+        android:headerDividersEnabled="false"
+        android:smoothScrollbar="true" />
 </LinearLayout>
