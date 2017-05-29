@@ -77,7 +77,7 @@ public class QuickParkActivity extends BaseActivity {
             public void onsucess(GetMessageBean getMessageBean) throws Exception {
                 dissDialog();
                 if (getMessageBean.getCode() == 1) {
-                    Toast.makeText(context,"修改成功!",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context,"停车成功!",Toast.LENGTH_SHORT).show();
                     et_park_num.setText("");
                 } else  {
                     Toast.makeText(context,getMessageBean.getMessage(),Toast.LENGTH_SHORT).show();

@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:gravity="center"
               android:orientation="vertical"
               android:background="@color/background"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
+    <include layout="@layout/title_bar"/>
 
     <EditText
         android:id="@+id/et_park_num"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/edittext_hight"
+        android:layout_height="@dimen/margin_top_btn"
         android:layout_marginLeft="@dimen/margin_left"
         android:layout_marginRight="@dimen/margin_right"
         android:textSize="@dimen/text_size"
-        android:layout_marginTop="@dimen/margin_top_edit"
+        android:layout_marginTop="@dimen/main_viewpager"
         android:hint="请输入车位编号"
         android:gravity="center"
         android:background="@drawable/edit_background"
@@ -27,9 +27,10 @@
         android:layout_height="@dimen/edittext_hight"
         android:text="确认泊车"
         android:textColor="@color/white"
+        android:layout_gravity="center"
         android:background="@drawable/btn_background"
         android:layout_marginTop="@dimen/margin_top_btn"
-        android:paddingLeft="@dimen/small_margin"
-        android:paddingRight="@dimen/small_margin"
+        android:paddingLeft="@dimen/mid_margin"
+        android:paddingRight="@dimen/mid_margin"
         />
 </LinearLayout>
