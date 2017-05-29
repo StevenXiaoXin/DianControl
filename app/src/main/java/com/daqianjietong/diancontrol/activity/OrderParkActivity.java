@@ -63,12 +63,10 @@ public class OrderParkActivity extends BaseActivity {
         initView();
         initData();
     }
-
     private void initView() {
         parkingIndex(1,(String)SharedPreferencesUtil.getData(context,"parkid",""),"");
 
     }
-
     private void initData() {
         mOrderListAdapter=new OrderListAdapter(context,partEntities);
         pullToRefreshListView.setAdapter(mOrderListAdapter);

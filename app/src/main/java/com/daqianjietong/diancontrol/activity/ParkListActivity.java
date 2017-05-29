@@ -38,7 +38,7 @@ public class ParkListActivity extends BaseActivity {
     @ViewInject(R.id.tv_title)
     private TextView tv_title;
 
-    @ViewInject(R.id.order_list)
+    @ViewInject(R.id.park_list)
     PullToRefreshListView pullToRefreshListView;
 
     private List<ParkListInfo.Data> partEntities=new ArrayList<>();

@@ -7,9 +7,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.daqianjietong.diancontrol.R;
-import com.daqianjietong.diancontrol.bean.OrderInfo;
 import com.daqianjietong.diancontrol.bean.ParkListInfo;
-import com.daqianjietong.diancontrol.utils.TimeUtils;
 
 import java.util.List;
 
@@ -63,7 +61,7 @@ public class ParkListAdapter extends BaseAdapter {
             holder.item_time.setText("");
             holder.tv_park_status.setText("空");
         } else if (entities.get(position).getPs_status().equals("2")) {
-            holder.item_time.setText(entities.get(position).getPs_starttime()+"至");
+            holder.item_time.setText(entities.get(position).getPs_starttime()+"时至");
             holder.tv_park_status.setText("停");
         }else if (entities.get(position).getPs_status().equals("3")) {
             holder.item_time.setText(entities.get(position).getPs_starttime()+"时至"+entities.get(position).getPs_endtime()+"时");
