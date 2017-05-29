@@ -115,7 +115,7 @@ public class Api {
 
   }
   /**
-     * 预约列表接口调用；
+     * 车位列表接口调用；
      * @param txt_parkid
      * @param listenter
      */
@@ -139,10 +139,20 @@ public class Api {
       params.put("old_pass",old_pass);
       params.put("new_pass",new_pass);
       params.put("token",(String)SharedPreferencesUtil.getData(context,"token",""));
-
-      Log.e("updata",params.toString());
       HttpUtil httpUtil = new HttpUtil();
       httpUtil.setUrl(HOST+CHANGEPSD).setMethod(API_METHOD.GET).setParams(params).setTypetoken(new TypeToken<GetMessageBean>(){}.getType()).seturllisenter(listenter).start();
+
+  }
+  /**
+     * 快速泊车接口调用；
+     * @param listenter
+     */
+  public  void upPark(String txt_parknum,  HttpUtil.URLListenter<GetMessageBean> listenter, Context context){
+      Map<String,String> params = new HashMap<>();
+      params.put("txt_parknum",txt_parknum);
+      params.put("token",(String)SharedPreferencesUtil.getData(context,"token",""));
+      HttpUtil httpUtil = new HttpUtil();
+      httpUtil.setUrl(HOST+QUICKPARK).setMethod(API_METHOD.GET).setParams(params).setTypetoken(new TypeToken<GetMessageBean>(){}.getType()).seturllisenter(listenter).start();
 
   }
 

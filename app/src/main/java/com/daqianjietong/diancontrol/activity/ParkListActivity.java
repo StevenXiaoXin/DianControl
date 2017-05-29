@@ -101,7 +101,7 @@ public class ParkListActivity extends BaseActivity {
                     mParkListAdapter.notifyDataSetChanged();
                 }
                 pageIndex=pageNo;
-                if (parkListInfo.getData() != null) {
+                if (parkListInfo.getData().size()>=1) {
                     for (int i = 0; i < parkListInfo.getData().size(); i++) {
                         partEntities.add(parkListInfo.getData().get(i));
                     }

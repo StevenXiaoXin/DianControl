@@ -107,7 +107,7 @@ public class OrderParkActivity extends BaseActivity {
                     mOrderListAdapter.notifyDataSetChanged();
                 }
                 pageIndex=pageNo;
-                if (orderInfo.getData() != null) {
+                if (orderInfo.getData().size()>=1) {
                     for (int i = 0; i < orderInfo.getData().size(); i++) {
                         partEntities.add(orderInfo.getData().get(i));
                     }
