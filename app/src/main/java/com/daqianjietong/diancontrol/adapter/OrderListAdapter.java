@@ -6,9 +6,13 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.daqianjietong.diancontrol.R;
+import com.daqianjietong.diancontrol.bean.LeaveBean;
 import com.daqianjietong.diancontrol.bean.OrderInfo;
+import com.daqianjietong.diancontrol.utils.Api;
+import com.daqianjietong.diancontrol.utils.HttpUtil;
 import com.daqianjietong.diancontrol.utils.TimeUtils;
 
 import java.util.List;
@@ -71,11 +75,9 @@ public class OrderListAdapter extends BaseAdapter {
         holder.item_orderlist_leave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                doLeave(entities.get(position).getR_id());
             }
         });
-
-
 
         return convertView;
     }
@@ -89,4 +91,25 @@ public class OrderListAdapter extends BaseAdapter {
 
 
     }
+
+    public void doLeave(String txt_reserveid){
+        Api.getInstance().leave(txt_reserveid,new HttpUtil.URLListenter<LeaveBean>(){
+
+            @Override
+            public void onsucess(LeaveBean leaveBean) throws Exception {
+                if (leaveBean.getData().get(0).equals("1")) {
+                    Toast.makeText(context, "离位成功", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(context, "离位失败", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onfaild(String error) {
+                Toast.makeText(context,error,Toast.LENGTH_SHORT).show();
+            }
+        },context);
+
+    }
+
 }

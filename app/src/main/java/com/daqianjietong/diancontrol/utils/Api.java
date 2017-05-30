@@ -6,9 +6,11 @@ import android.util.Log;
 
 import com.daqianjietong.diancontrol.bean.GetMainNumBean;
 import com.daqianjietong.diancontrol.bean.GetMessageBean;
+import com.daqianjietong.diancontrol.bean.LeaveBean;
 import com.daqianjietong.diancontrol.bean.OrderInfo;
 import com.daqianjietong.diancontrol.bean.ParkListInfo;
 import com.daqianjietong.diancontrol.bean.PersonalInfoBean;
+import com.daqianjietong.diancontrol.bean.QuickListBean;
 import com.daqianjietong.diancontrol.bean.UserInfoBean;
 import com.google.gson.reflect.TypeToken;
 
@@ -153,6 +155,33 @@ public class Api {
       params.put("token",(String)SharedPreferencesUtil.getData(context,"token",""));
       HttpUtil httpUtil = new HttpUtil();
       httpUtil.setUrl(HOST+QUICKPARK).setMethod(API_METHOD.GET).setParams(params).setTypetoken(new TypeToken<GetMessageBean>(){}.getType()).seturllisenter(listenter).start();
+
+  }
+
+
+
+  /**
+     * 临时停车接口调用；
+     * @param listenter
+     */
+  public  void leaveQuick(String txt_parknum, HttpUtil.URLListenter<QuickListBean> listenter, Context context){
+      Map<String,String> params = new HashMap<>();
+      params.put("txt_parknum",txt_parknum);
+      params.put("token",(String)SharedPreferencesUtil.getData(context,"token",""));
+      HttpUtil httpUtil = new HttpUtil();
+      httpUtil.setUrl(HOST+QUICKLIST).setMethod(API_METHOD.GET).setParams(params).setTypetoken(new TypeToken<QuickListBean>(){}.getType()).seturllisenter(listenter).start();
+
+  }
+  /**
+     * 临时停车接口调用；
+     * @param listenter
+     */
+  public  void leave(String txt_reserveid, HttpUtil.URLListenter<LeaveBean> listenter, Context context){
+      Map<String,String> params = new HashMap<>();
+      params.put("txt_reserveid",txt_reserveid);
+      params.put("token",(String)SharedPreferencesUtil.getData(context,"token",""));
+      HttpUtil httpUtil = new HttpUtil();
+      httpUtil.setUrl(HOST+LEAVE).setMethod(API_METHOD.GET).setParams(params).setTypetoken(new TypeToken<LeaveBean>(){}.getType()).seturllisenter(listenter).start();
 
   }
 
