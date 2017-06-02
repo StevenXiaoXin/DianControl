@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -47,7 +48,6 @@ public class ReceiptActivity extends BaseActivity {
     private QuickListAdapter mQuickListAdapter;
     private Activity act;
     private Context context;
-    private int pageIndex = 1;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -60,7 +60,9 @@ public class ReceiptActivity extends BaseActivity {
 
 
     private void initView() {
-        parkingIndex((String) SharedPreferencesUtil.getData(context,"parkid",""));
+        parkingIndex("");
+        Log.e("-------------",(String)SharedPreferencesUtil.getData(context,"token",""));
+
     }
 
     private void initData() {
@@ -82,9 +84,9 @@ public class ReceiptActivity extends BaseActivity {
             @Override
             public void onRefresh(PullToRefreshBase<ListView> refreshView) {
                 if (refreshView.getCurrentMode().equals(PullToRefreshBase.Mode.PULL_FROM_START)) {
-                    parkingIndex( (String) SharedPreferencesUtil.getData(context,"parkid",""));
+                    parkingIndex( "");
                 } else if (refreshView.getCurrentMode().equals(PullToRefreshBase.Mode.PULL_FROM_END)) {
-                    parkingIndex((String)SharedPreferencesUtil.getData(context,"parkid",""));
+                    parkingIndex("");
                 }
 
             }
@@ -98,6 +100,9 @@ public class ReceiptActivity extends BaseActivity {
             public void onsucess(QuickListBean quickListBean) throws Exception {
                 dissDialog();
                 pullToRefreshListView.onRefreshComplete();
+                if (partEntities.size()>0){
+                    partEntities.clear();
+                }
                 if (quickListBean.getData().size()>=1) {
                     for (int i = 0; i < quickListBean.getData().size(); i++) {
                         partEntities.add(quickListBean.getData().get(i));

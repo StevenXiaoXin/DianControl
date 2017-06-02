@@ -173,7 +173,7 @@ public class Api {
 
   }
   /**
-     * 临时停车接口调用；
+     * 离位接口调用；
      * @param listenter
      */
   public  void leave(String txt_reserveid, HttpUtil.URLListenter<LeaveBean> listenter, Context context){

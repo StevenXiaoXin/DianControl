@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/background"
+    >
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="停车消费情况"
+    android:textSize="@dimen/first_font"
+    android:textColor="@color/text_color"
+    android:layout_marginTop="@dimen/margin_top"
+    android:layout_marginLeft="@dimen/margin_top"
+    android:layout_marginBottom="@dimen/small_margin"
+    />
+    <TextView
+        android:id="@+id/tv_stop_long"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="停车时长:10小时"
+        android:textColor="@color/text_color"
+        android:layout_marginLeft="@dimen/margin_top_btn"
+        />
+    <TextView
+        android:id="@+id/tv_stop_money"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="停车收费:6元"
+        android:textColor="@color/text_color"
+        android:layout_marginLeft="@dimen/margin_top_btn"
+        android:layout_marginTop="@dimen/small_margin"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="选择支付方式"
+        android:textSize="@dimen/first_font"
+        android:textColor="@color/text_color"
+        android:layout_margin="@dimen/margin_top"
+        />
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="40dp"
+    android:background="@color/black"
+    >
+
+</LinearLayout>
+    <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="40dp"
+    android:background="@color/colorAccent"
+    >
+
+</LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_margin="@dimen/margin_top"
+        >
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="选择是否使用优惠券"
+            android:textSize="@dimen/first_font"
+            android:textColor="@color/text_color"
+
+            />
+        <CheckBox
+            android:id="@+id/cb_use_card"
+            android:layout_width="30dp"
+            android:layout_height="30dp"/>
+
+    </LinearLayout>
+    <EditText
+        android:id="@+id/et_card_num"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/margin_top_btn"
+        android:layout_marginLeft="@dimen/margin_left"
+        android:layout_marginRight="@dimen/margin_right"
+        android:textSize="@dimen/text_size"
+        android:hint="输入停车券号码"
+        android:gravity="center"
+        android:background="@drawable/edit_background"
+        android:cursorVisible="false"
+        />
+    <Button
+        android:id="@+id/btn_pay"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/edittext_hight"
+        android:text="确认收款"
+        android:textColor="@color/white"
+        android:layout_gravity="center"
+        android:background="@drawable/btn_background"
+        android:layout_marginTop="@dimen/small_margin"
+        android:paddingLeft="@dimen/mid_margin"
+        android:paddingRight="@dimen/mid_margin"
+        />
+</LinearLayout>

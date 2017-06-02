@@ -58,6 +58,10 @@
             android:name=".activity.UpdatePwdActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.MakeSurePayActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait"/>
 
     </application>
 
